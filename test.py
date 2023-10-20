@@ -30,6 +30,7 @@ def get_headers():
             'sec-fetch-mode':'navigate',
             'sec-fetch-site':'cross-site',
             'sec-fetch-user':'?1',
+            'cookie': '_gcl_au=1.1.97044156.1697563643; sessionId=003ca1a9-c459-4002-884a-3b4f8b7c9d31; cf_clearance=GMNnjORgEXYTJHL5aOJcp7gnixX8QjsCc_XAcFVHYRQ-1697637485-0-1-2c0d1673.d22ee29b.9a977859-160.2.1697637485; _hjSessionUser_194887=eyJpZCI6IjllZDhiNzlhLTNiZjQtNTRkOC04MDMzLWJjNzllOTRkMDliMyIsImNyZWF0ZWQiOjE2OTc1NjM2NTEzMTUsImV4aXN0aW5nIjp0cnVlfQ==; __cf_bm=diYYBYxMaiErjQZKQB9Ak6E6C4I17D2SVFmOYSHgBzE-1697818421-0-AX/+d59Zktfc9I+nmnX6TNZVNx6Y031Zq1Wsa2AGB4J1a9lgCxA38b25atmzKtFM2giqrtaiRBCUNsBQw6x2E5Xes+nSwb+rfyoaptOPYksK; _gid=GA1.3.1580186032.1697818424; _hjIncludedInSessionSample_194887=0; _hjSession_194887=eyJpZCI6ImZkY2ZkZjE3LWZhZDAtNDM0NC1iZWJjLTlkY2QwZjdjNWNiYiIsImNyZWF0ZWQiOjE2OTc4MTg0MjU5NTksImluU2FtcGxlIjpmYWxzZSwic2Vzc2lvbml6ZXJCZXRhRW5hYmxlZCI6dHJ1ZX0=; _hjAbsoluteSessionInProgress=0; g_state={"i_p":1697904913382,"i_l":2}; JSESSIONID=9EB2B1BB39EDB3C7155B80F40FD96082; _ga_68T3PL08E4=GS1.1.1697818424.3.1.1697818630.52.0.0; _ga=GA1.3.319898863.1697563644',
             'upgrade-insecure-requests':'1',
             'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36'}
 
@@ -55,7 +56,8 @@ def get_page(city, type, beds, page):
     if result.status_code >= 300  and result.status_code <= 399:
         print('Redirect')
     if result.status_code >= 400  and result.status_code <= 499:
-        print('Client error')
+        print('Client error: ' + str(result.status_code))
+        print(result.content)
     if result.status_code >= 500  and result.status_code <= 599:
         print('Server error')
         
